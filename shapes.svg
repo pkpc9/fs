@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="109.568 176.179 283.342 57.695" width="283.342" height="57.695" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <ellipse style="fill: none; fill-rule: nonzero; stroke-width: 8px; stroke: rgb(221, 221, 221);" cx="363.137" cy="205.027" rx="22.841" ry="23.229"/>
+  <path d="M 286.869 181.219 H 287.346 V 204.991 H 310.918 V 205.471 H 287.346 V 229.243 H 286.869 V 205.471 H 263.297 V 204.991 H 286.869 Z" style="paint-order: stroke; fill: rgba(0, 0, 0, 0); stroke-linecap: round; stroke-miterlimit: 30; stroke-linejoin: round; stroke-width: 8px; stroke: rgb(221, 221, 221);" bx:shape="cross 263.297 181.219 47.621 48.024 0.48 0.477 0.5 1@19627db8"/>
+  <path d="M 203.316 189.19 H 203.317 V 214.93 H 228.842 V 214.931 H 203.317 V 240.672 H 203.316 V 214.931 H 177.792 V 214.93 H 203.316 Z" style="paint-order: stroke; fill: rgba(0, 0, 0, 0); stroke-linecap: round; stroke-miterlimit: 30; stroke-linejoin: round; stroke-width: 8px; stroke: rgb(221, 221, 221); transform-origin: 203.317px 214.931px;" transform="matrix(0.694725215435, 0.719274878502, -0.719274878502, 0.694725215435, 10.145323009407, -8.507288705123)" bx:shape="cross 177.792 189.19 51.05 51.482 0.001 0.001 0.5 1@1cb3608e"/>
+  <path d="M 138.688 189.635 L 160.876 226.045 L 116.5 226.045 L 138.688 189.635 Z" style="fill: rgb(216, 216, 216); fill-opacity: 0; stroke-width: 6px; stroke: rgb(221, 221, 221);" bx:shape="triangle 116.5 189.635 44.376 36.41 0.5 0 1@2368d555"/>
+</svg>
