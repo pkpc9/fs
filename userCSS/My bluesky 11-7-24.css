@@ -1,0 +1,216 @@
+/* ==UserStyle==
+@name           My bluesky
+@namespace      https://github.com/pkpc99
+@version        1.0
+@description    My bluesky
+                I made Bluesky suit my tastes.
+                - Slightly reduces the size of images in feeds.
+                - Slightly reduces the size of interaction buttons in feeds.
+                - Hides the big, interactive like counts/repost counts.
+                - Hides post if it contains muted word.
+                - Hides the quoted post when scrolling through quote-reposts. 
+                - Moves the notification indicator a couple pixels higher.
+                - Moves the "Follows you" indicator to the right of usernames, like on Twitter.
+                - Moves interaction counts and the post date to one row. For me, this makes things look cleaner. 
+                It's my Control Panel for Twitter settings ported over to Bluesky.
+                Some things are slightly broken! I'll fix them!
+                That's all.
+@author         pkpc99
+@var checkbox fontEnable "Font enabled" 1
+
+==/UserStyle== */
+@-moz-document url-prefix("https://bsky.app/") {
+
+  if fontEnable {
+    [data-expoimage="true"] img {
+border: 15px solid red!important;
+    }
+  }
+
+ 
+}
+@-moz-document domain("bsky.app") {
+ /*Trying to reduce motion*/
+ [class*="css-175oi2r"][style*="transform: translateY(0px"]:has([data-testid="homeScreenFeedTabs"]),
+ [data-testid="homeScreenFeedTabs"] {
+  position: absolute;
+  top: 0;
+  opacity: 1;
+  z-index: 100;
+  translate: 0px 0px; } 
+ 
+ 
+ /* Filter things based on labels */
+ div[role="link"]:has([aria-label*="Post Hidden by Muted"]),
+ div[role="link"]:has([aria-label*="Adult Content"]){
+ display:none;
+  visibility:hidden;
+ }
+
+ [data-testid="followingFeedPage-feed-flatlist"]{
+  padding-top: 50px!important;
+ }
+ 
+ [data-testid="homeScreenFeedTabs-selector"]{
+  display:flex;
+  align-items:center;
+  align-content: center;
+  justify-content: space-between;
+ }
+ 
+ [data-testid="homeScreenFeedTabs-selector"] *{gap:20px;}
+ 
+}
+
+@-moz-document domain("bsky.app") {
+ /*Site-wide*/
+ /* Reduce image size*/
+ div[class="css-175oi2r r-1loqt21 r-1otgn73 r-1udh08x"] {
+  border-radius: 8px;
+  width: 80%;
+  margin: 0; }
+
+ /* Hide the big like and repost counts on posts */
+ div[aria-label="Reposts of this post"],
+ div[aria-label="Likes on this post"] {
+  display: none; }
+
+ /* Smaller interaction buttons on posts */
+ div[class="css-175oi2r r-1hfyk0a r-1qfoi16"] svg {
+  width: 20px;
+  height: 20px; }
+
+ div[class="css-175oi2r"][style="flex-direction: row; justify-content: space-between; align-items: center;"] {
+  margin: 5px 0; }
+
+ div[class="css-175oi2r"][style="flex-direction: column; border-radius: 8px; overflow: hidden;"] {
+  margin: 10px 0; }
+
+ /* Sidebar */
+.r-1w88a7h {
+ width: max-content;
+  background: transparent;
+  font-size: 1em;
+ }
+
+ div[class="css-146c3p1 r-16dba41"] {
+  font-size: 15px!important; }
+
+ /* Notification indicator */
+ .r-1liledf {
+  translate: 0px -5px;
+  scale: 1.2;
+  font-size: 12px;
+  font-weight: 600; }
+
+ /* "Follows you" indicator, moved to the right*/
+ [style*="background-color: rgb(30, 41, 54); border"] {
+  order: 1;
+  opacity: .5;
+  border-radius: 8px!important;
+  translate: 0 2px;
+  margin-left: 5px; }
+ 
+
+}
+
+@-moz-document regexp("https://(www\\.)?bsky\\.app/*/.+(?=\\/quotes\\/?).+") {
+ /*Quotes only*/
+ /* Hide quoted post */
+ [style*="border-width: 1px;"]:has(div[aria-label*="Post by"]) {
+padding: 0;
+  margin: 0;
+  height: 10px;
+  visibility: hidden; }
+
+ [data-testid="postText"] {
+  font-size: 15px!important;
+  margin-bottom: 20px!important; } 
+ 
+ [style*="margin-top: 8px;"]:has(img),
+ [style*="aspect-ratio: 1.7"]:has([src*="https://t.gifs.bsky.app"]){
+ margin-right:20px; 
+ }
+ 
+}
+
+@-moz-document regexp("https://bsky.app/profile/[^/].+/(?!post).+") {
+ /*Posts only */
+ /* Move quotes/interactions to one row */
+ .r-1hfyk0a [style*="flex-direction: row; justify-content: space-between; align-items: center;"] {
+  position: absolute;
+  gap: 30px;
+  right: 0px;
+  bottom: 16px;
+  flex-direction: row;
+  justify-content: start;
+  align-items: self-end;
+  /* Change interaction size */
+  transform-origin: right;
+  scale: .9;
+  translate: 0 25px; }
+
+ /* Smaller text on posts */
+ .r-9aemit *[data-word-wrap="1"] {
+  font-size: 18px!important; }
+
+ .css-175oi2r[class*="r-qklmqi r-5kkj8d r-18u37iz r-15d164r r-1g94qm0 r-1sp51qo"] {
+  border: none;
+  translate: 0 10px; }
+
+ .r-1qfoi16,
+ .r-1hfyk0a {
+  padding-left: 0px;
+  padding-right: 0px; }
+
+ .r-9aemit,
+ .r-1bymd8e {
+  padding: 0 10px; }
+
+ .r-15d164r {
+  margin-bottom: 5px; } 
+ 
+ [style*="flex-direction: row; align-items: center; gap: 16px; border-top-width: 1px;"]:not([aria-label="Quotes of this post"]){
+border-top:none;
+  margin:-4px;
+}
+}
+
+@-moz-document regexp("https://bsky.app/*/[^/].+(post)?") {
+ 
+ 
+ /* TO-DO: */
+ /*
+ - Fix how images show up in posts now that i've done this
+ - Fix Quote posts
+ /*Excludes Section 4. from profiles*/
+ /*[data-testid="postText"][data-word-wrap] {
+  padding-bottom: 5px; }
+ 
+ [data-testid="contentHider-post"] [aria-label*="Post by"] [data-expoimage="true"][style*="overflow: hidden;"]{
+    overflow: visible!important;
+    max-width: 175px!important;
+    height: 130px; 
+     aspect-ratio: .8 / .9; }
+ 
+ 
+  [data-testid="contentHider-post"] [aria-label*="Post by"] [data-expoimage="true"] [fetchpriority="auto"] {
+  border-radius: 10px;}
+
+ .r-1ujkv8a:nth-of-type(2) {
+   pointer-events: none;
+   outline: 15px solid green;
+   display: none;
+ visibility: hidden;}
+ 
+
+ 
+ /* Links in quote posts with images *//*
+ [aria-label*="Post by"] > * > * > a:has([data-expoimage="true"]){
+  width: 37%;
+ }
+
+ path[fill="#ec4899"] {
+  fill: blue; } 
+  */
+}

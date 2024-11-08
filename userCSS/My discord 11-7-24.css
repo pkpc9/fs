@@ -1,0 +1,148 @@
+/* ==UserStyle==
+@name           My discord
+@namespace      https://github.com/pkpc99
+@version        1.0
+@description    My discord
+                I made Discord suit my tastes.
+                - Disables profile effects.
+                - Moves the profile banner behind the avatar & username, allowing for more bio space.
+                - Changes the size of the fullsized profile.
+@author         pkpc99
+==/UserStyle== */
+@-moz-document domain("discord.com") {
+ 
+div > * > * > [class*="sidebar_"] {
+width: 230px;
+max-width: 340px;
+   background: maroon!important;
+ }
+ 
+
+ /* Disable profile effects */
+ div[class^="profileEffects_"]  div[class^="inner_"] {
+ display: none;
+ visibility: hidden;
+ }
+ 
+ /* FullSize Profile */
+ div[class^="fullSizeOuter_"]{
+  height: 600px;
+ }
+ 
+ div[class^="fullSizeOuter_"] div[class^="avatar_"]{top: 30px; }
+ div[class^="fullSizeOuter_"] div[class^="avatar_"] svg{ width: 130px; height: 130px; }
+ div[class^="fullSizeOuter_"] div[class^="avatar_"] svg[class^="avatarDecoration_"]{
+ top: -10px;
+ left: initial;
+ scale: 1.25;
+ }
+ 
+ [class^="statusBubbleOuter_"]{
+ top: 85px;
+ right: 10px;
+ max-width: 190px;
+ min-width: 180px;
+}
+
+ 
+[class*="statusText_"][data-text-variant="text-sm/medium"],
+[class*="statusEmojiInline_"]{
+font-size: .9em;
+}
+
+ header svg[class^="mask_"][viewBox="0 0 600 210"] {
+  width: 600px !important;
+  position: absolute;
+  z-index: 0;
+  filter: blur(1px);
+ }
+ 
+ div[class^="headerButtons_"]{
+display: none;
+ } 
+ button[aria-label="More"]{
+  color: var(--white-500);
+  background: var(--profile-gradient-button-color);
+  border-radius: 3px;
+}
+
+ /* Hide the border circle mask on banners */
+ svg[class^="mask_"] circle {
+  display: none;
+ }
+
+ div[class^="banner_"] {
+  min-width: 300px!Important;
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+ }
+
+ [class^="usernameRow_"]{background:none;
+ min-height: 80px;
+  display: flex;
+align-items: flex-end;
+ }
+ 
+ div[class^="body_"] div[class^="container_"]:has(div[class^="usernameRow_"]) {
+  position: absolute;
+  direction: rtl;
+  margin-right: 20px;
+  top: 50px;  right: 0;
+  max-width: 37%;
+  scale: 100%;
+  transform-origin: bottom right;
+ }
+
+ [class^="fullSizeOverlayBackground_"] {
+position: relative;
+translate: 0 85px;
+    height: 430px; 
+}
+
+ div[class^="tags_"] {
+ width: max-content; }
+  div[class^="tags_"] div[class^="info_"] {order: 3;}
+  div[class^="tags_"] div[class^="dotSpacer_"]{order:2;}
+  div[class^="tags_"] div[aria-label="Pronouns"]{order:1;}
+  div[class^="tags_"] div[aria-label="User Badges"]{display: none;}
+ 
+.overlay_bc9cc2{
+height: initial;
+ }
+ 
+ img[class^="connectedAccountIcon_"]{
+ width: 15px;
+ height: 15px;
+ }
+ 
+ div[class^="connectedAccountContainer_"] .text-md\/semibold_dc00ef {font-size: 12px;}
+ div[class^="connectedAccountContainer_"] .text-xs\/normal_dc00ef{display: none}
+ 
+:has([class*="biteSize_"]){overflow:visible!important;} 
+:has([class*="biteSize_"]) [class*="footer_"]{display:none!important;} 
+[class^="container_"]:has(h1[class*="biteSize_"]){
+  translate: 0 -150px;
+ }
+ 
+:has([class*="biteSize_"]) [class^="statusBubbleOuter_"]{
+ top: -90px;
+ max-width: 110px;
+ min-width: 80px;
+}
+ 
+:has([class*="biteSize_"]) [class^="statusBubbleOuter_"]:before{
+ top: 40px;}
+ :has([class*="biteSize_"]) [class^="statusBubbleOuter_"]:after{
+  top: 65px;
+  left: 5px;}
+ :has([class*="biteSize_"]) [class^="statusBubbleOuter_"],
+ :has([class*="biteSize_"]) [class^="statusBubbleOuter_"]:before,
+  :has([class*="biteSize_"]) [class^="statusBubbleOuter_"]:after{
+ border: 2px solid var(--interactive-normal);}
+:has([class*="biteSize_"]) [class^="statusBubbleOuter_"] [class*="statusText_"][data-text-variant="text-sm/medium"],
+[class*="statusEmojiInline_"]{
+font-size: .7em;
+}
+ 
+ 
+}

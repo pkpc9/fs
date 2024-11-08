@@ -1,0 +1,26 @@
+/* ==UserStyle==
+@name           My piped
+@namespace      github.com/pkpc99
+@version        1
+@description    Piped userstyle
+@author         pkpc99
+==/UserStyle== */
+
+@-moz-document domain("piped.nosebs.ru"), domain("piped.privacydev.net") {
+
+ .shaka-video-container {
+margin: auto;
+    max-width: fit-content;
+  max-height: fit-content;
+  padding: 0 0!important;
+    left: initial;
+}
+ 
+.w-full:not(video){
+    padding: 0px 15px;
+}
+ 
+ button:has([class="i-fa6-solid:download"]){
+  display:none
+ }
+}

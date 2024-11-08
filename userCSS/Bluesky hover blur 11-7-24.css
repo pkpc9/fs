@@ -1,0 +1,37 @@
+/* ==UserStyle==
+@name           Bluesky hover blur
+@namespace      github.com/pkpc99
+@version        1.0.0
+@description    Blurs images like on twitter
+@author         pkpc99
+==/UserStyle== */
+
+@-moz-document url-prefix("https://bsky.app/") {
+
+div[data-expoimage="true"] img{
+filter:blur(7px) 
+}
+ 
+[data-expoimage="true"]:has(img)::after{
+  content: "hover for image";
+ color:white;
+ text-align: center;
+ font: bold 1em sans-serif;
+position:relative;
+background: #000a;
+ backdrop-filter: blur(6px);
+ width:200px;
+ margin:auto;
+ padding: 10px;
+ border-radius:100px;
+}
+ div[data-expoimage="true"] img:hover{
+filter:blur(0) 
+}
+ 
+[data-expoimage="true"]:has(img):hover:after{
+  content: "";
+ display:none; visibility:hidden;
+ }
+ 
+}
